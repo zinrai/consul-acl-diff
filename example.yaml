@@ -1,0 +1,26 @@
+# Example configuration for consul-acl-diff.
+# This is the same schema consul-acl-sync applies.
+
+policies:
+  - name: web-read
+    description: "Read access for the web app"
+    rules: |
+      key_prefix "web/" {
+        policy = "read"
+      }
+
+  - name: config-write
+    description: "Write access to shared config"
+    rules: |
+      key_prefix "config/" {
+        policy = "write"
+      }
+
+tokens:
+  # accessor_id is the identity key. secret_id is the credential. Both are
+  # pinned so creation is deterministic.
+  - accessor_id: 3b2a1c00-0000-4000-8000-000000000001
+    secret_id: 9f1c7d00-0000-4000-8000-000000000001
+    description: "web app token"
+    policies:
+      - web-read
