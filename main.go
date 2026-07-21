@@ -17,16 +17,16 @@ func main() {
 	drift, err := run()
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "consul-acl-diff:", err)
-		os.Exit(1)
+		os.Exit(2)
 	}
 	if drift {
 		os.Exit(1)
 	}
 }
 
-// run reports drift and returns whether any was found. Exit codes match
-// consul-kv-diff: 0 when the config matches Consul, 1 when drift is found or an
-// error occurs.
+// run reports drift and returns whether any was found. Exit codes: 0 when the
+// config matches Consul, 1 when drift is found, 2 when an error occurs (handled
+// by main).
 func run() (bool, error) {
 	var (
 		configPath  string

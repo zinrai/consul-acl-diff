@@ -38,7 +38,8 @@ Drift is reported in three categories per resource:
 Matching consul-kv-diff, so the tool works as a CI gate:
 
 - `0`: config matches Consul
-- `1`: drift found, or an error occurred
+- `1`: drift found
+- `2`: an error occurred
 
 All three categories, including `only in consul`, count as drift.
 
